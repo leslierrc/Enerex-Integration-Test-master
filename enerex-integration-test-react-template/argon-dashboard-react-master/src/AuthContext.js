@@ -20,4 +20,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthContext, AuthProvider }; // Asegúrate de exportar ambos correctamente
+export { AuthContext, AuthProvider }; 

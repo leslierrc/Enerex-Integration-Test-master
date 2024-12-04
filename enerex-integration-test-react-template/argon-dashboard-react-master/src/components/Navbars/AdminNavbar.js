@@ -21,18 +21,12 @@ import {
 import { AuthContext } from '../../AuthContext';
 
 const AdminNavbar = (props) => {
-
-  const { logout } = useContext(AuthContext); // Obtén el contexto
-
-  const navigate = useNavigate(); // Obtén la función de navegación
-
+  const { logout } = useContext(AuthContext); 
+  const navigate = useNavigate(); 
 
   const handleLogout = () => {
-
-    logout() // Llama a la función de logout
-
-    navigate('/auth/login'); // Redirige al login
-
+    logout() 
+    navigate('/auth/login'); 
   };
   return (
     <>

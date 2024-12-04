@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-<AuthProvider> {/* Envuelve las rutas con AuthProvider */}
+<AuthProvider> 
   <Routes>
     <Route path="/admin/*" element={<AdminLayout />} />
     <Route path="/auth/*" element={<AuthLayout />} />

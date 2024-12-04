@@ -3,22 +3,21 @@ import { AuthContext } from './AuthContext';
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
-    // Intenta obtener el token del localStorage al iniciar
     return localStorage.getItem('token') || null;
   });
 
   const updateToken = (newToken) => {
     setToken(newToken);
     if (newToken) {
-      localStorage.setItem('token', newToken); // Guarda el token en localStorage
+      localStorage.setItem('token', newToken); 
     } else {
-      localStorage.removeItem('token'); // Elimina el token si es null
+      localStorage.removeItem('token'); 
     }
   };
 
   const logout = () => {
-    setToken(null); // Limpia el token en el estado
-    localStorage.removeItem('token'); // Elimina el token del localStorage
+    setToken(null); 
+    localStorage.removeItem('token'); 
   };
 
   return (

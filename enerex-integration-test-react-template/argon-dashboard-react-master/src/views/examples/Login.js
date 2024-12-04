@@ -36,8 +36,8 @@ const Login = () => {
       if (response.ok) {
         const token = await response.text();
         console.log('Login successful, received token:', token);
-        updateToken(token); // Actualiza el token en el contexto
-        navigate('/admin/index'); // Redirige a la página principal
+        updateToken(token); 
+        navigate('/admin/index'); 
       } else {
         console.error('Login failed:', response.statusText);
       }
