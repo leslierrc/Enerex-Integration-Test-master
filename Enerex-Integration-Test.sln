@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enerex-Integration-Test", "Enerex-Integration-Test\Enerex-Integration-Test.csproj", "{4EE5B529-6A75-455C-9699-D7D2EF29C8ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enerex-Integration-Library", "Enerex-Integration-Library\Enerex-Integration-Library.csproj", "{9BED34B1-B5B3-4CA3-9EC6-58FBC46F054F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EE5B529-6A75-455C-9699-D7D2EF29C8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE5B529-6A75-455C-9699-D7D2EF29C8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE5B529-6A75-455C-9699-D7D2EF29C8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE5B529-6A75-455C-9699-D7D2EF29C8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BED34B1-B5B3-4CA3-9EC6-58FBC46F054F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BED34B1-B5B3-4CA3-9EC6-58FBC46F054F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BED34B1-B5B3-4CA3-9EC6-58FBC46F054F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BED34B1-B5B3-4CA3-9EC6-58FBC46F054F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F11D5A27-A666-4120-8BEF-B43769679F70}
+	EndGlobalSection
+EndGlobal

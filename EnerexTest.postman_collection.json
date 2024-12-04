@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "9177ca19-320d-40d2-b266-a43144db85e1",
+		"name": "EnerexTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14747596"
+	},
+	"item": [
+		{
+			"name": "GetStudents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlRlc3RVc2VyMSIsImVtYWlsIjoidGVzdFVzZXIxQGdtYWlsLmNvbSIsImV4cCI6MTcxNTA0NDM5NywiaXNzIjoiaHR0cHM6Ly9pZC5FbmVyZXhUZXN0LmNvbSIsImF1ZCI6Imh0dHBzOi8vVGVhbS5FbmVyZXhUZXN0LmNvbSJ9.cuA_R7jfGs2FpT54pvbrWn2B9ht869HgkpD0fw2MyLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7087/api/Student/GetStudents",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"api",
+						"Student",
+						"GetStudents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"TestUser1\",\r\n    \"Email\": \"testUser1@gmail.com\",\r\n    \"Password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/api/Login/Authorize",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"api",
+						"Login",
+						"Authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlRlc3RVc2VyMSIsImVtYWlsIjoidGVzdFVzZXIxQGdtYWlsLmNvbSIsImV4cCI6MTcxNTA0NDM5NywiaXNzIjoiaHR0cHM6Ly9pZC5FbmVyZXhUZXN0LmNvbSIsImF1ZCI6Imh0dHBzOi8vVGVhbS5FbmVyZXhUZXN0LmNvbSJ9.cuA_R7jfGs2FpT54pvbrWn2B9ht869HgkpD0fw2MyLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Goergia Florida Lane\",\r\n    \"Gender\": \"F\",\r\n    \"Age\": 24,\r\n    \"Education\": \"Bussiness\",\r\n    \"AcademicYear\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/api/Student/AddStudent",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"api",
+						"Student",
+						"AddStudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlRlc3RVc2VyMSIsImVtYWlsIjoidGVzdFVzZXIxQGdtYWlsLmNvbSIsImV4cCI6MTcxNTA0NDM5NywiaXNzIjoiaHR0cHM6Ly9pZC5FbmVyZXhUZXN0LmNvbSIsImF1ZCI6Imh0dHBzOi8vVGVhbS5FbmVyZXhUZXN0LmNvbSJ9.cuA_R7jfGs2FpT54pvbrWn2B9ht869HgkpD0fw2MyLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Chris Moretz Green\",\r\n    \"Gender\": \"M\",\r\n    \"Age\": 24,\r\n    \"Education\": \"Biology\",\r\n    \"AcademicYear\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/api/Student/UpdateStudent/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"api",
+						"Student",
+						"UpdateStudent",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteStudent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IlRlc3RVc2VyMSIsImVtYWlsIjoidGVzdFVzZXIxQGdtYWlsLmNvbSIsImV4cCI6MTcxNTA0NDM5NywiaXNzIjoiaHR0cHM6Ly9pZC5FbmVyZXhUZXN0LmNvbSIsImF1ZCI6Imh0dHBzOi8vVGVhbS5FbmVyZXhUZXN0LmNvbSJ9.cuA_R7jfGs2FpT54pvbrWn2B9ht869HgkpD0fw2MyLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7087/api/Student/DeleteStudent/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7087",
+					"path": [
+						"api",
+						"Student",
+						"DeleteStudent",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

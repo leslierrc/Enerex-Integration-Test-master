@@ -1,0 +1,6 @@
+@Enerex_Integration_Test_HostAddress = http://localhost:5290
+
+GET {{Enerex_Integration_Test_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
