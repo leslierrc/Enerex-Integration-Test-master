@@ -27,6 +27,17 @@ const Index = () => {
   const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
   const [currentStudent, setCurrentStudent] = useState(null);
+  const [newStudent, setNewStudent] = useState({
+    id: 0,
+    name: "",
+    gender: "M",
+    age: 0,
+    education: "",
+    academicYear: 0,
+  });
+
+  const [isAdding, setIsAdding] = useState(false);
+
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -52,7 +63,20 @@ const Index = () => {
     }
   }, [token]);
 
-  const toggleModal = () => setModal(!modal);
+  const toggleModal = () => {
+    setModal(!modal);
+    if (modal) {
+      setNewStudent({
+        id: 0,
+        name: "",
+        gender: "M",
+        age: 0,
+        education: "",
+        academicYear: 0,
+      });
+      setIsAdding(false);
+    }
+  };
 
   const handleEditClick = (student) => {
     setCurrentStudent(student);
@@ -61,7 +85,11 @@ const Index = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCurrentStudent({ ...currentStudent, [name]: value });
+    if (isAdding) {
+      setNewStudent({ ...newStudent, [name]: value });
+    } else {
+      setCurrentStudent({ ...currentStudent, [name]: value });
+    }
   };
 
   const handleUpdateStudent = async () => {
@@ -76,6 +104,20 @@ const Index = () => {
           student.id === currentStudent.id ? currentStudent : student
         )
       );
+      toggleModal();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleAddStudent = async () => {
+    try {
+      const response = await axios.post("http://localhost:5290/api/Student/AddStudent", newStudent, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setStudents((prevStudents) => [...prevStudents, response.data]);
       toggleModal();
     } catch (err) {
       setError(err.message);
@@ -112,6 +154,9 @@ const Index = () => {
               <CardHeader className="border-0">
                 <h3 className="mb-0">Students List</h3>
               </CardHeader>
+              <Button color="primary" onClick={() => { setIsAdding(true); toggleModal(); }}>
+                Add Student
+              </Button>
               <CardBody>
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
@@ -151,72 +196,76 @@ const Index = () => {
           </Col>
         </Row>
       </Container>
-      {/* Modal para editar estudiante */}
+
+
       <Modal isOpen={modal} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Edit Student</ModalHeader>
+        <ModalHeader toggle={toggleModal}>
+          {isAdding ? "Add New Student" : "Edit Student"}
+        </ModalHeader>
         <ModalBody>
-          {currentStudent && (
-            <Form>
-              <FormGroup>
-                <Label for="name">Name</Label>
-                <Input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={currentStudent.name}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="gender">Gender</Label>
-                <Input
-                  type="select"
-                  name="gender"
-                  id="gender"
-                  value={currentStudent.gender}
-                  onChange={handleInputChange}
-                >
-                  <option value="M">Male</option>
-                  <option value="F">Female</option>
-                  <option value="Other">Other</option>
-                </Input>
-              </FormGroup>
-              <FormGroup>
-                <Label for="age">Age</Label>
-                <Input
-                  type="number"
-                  name="age"
-                  id="age"
-                  value={currentStudent.age}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="age">Academy Year</Label>
-                <Input
-                  type="number"
-                  name="academicYear"
-                  id="academicYear"
-                  value={currentStudent.academicYear}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="education">Education</Label>
-                <Input
-                  type="text"
-                  name="education"
-                  id="education"
-                  value={currentStudent.education}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Form>
-          )}
+          <Form>
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                value={isAdding ? newStudent.name : currentStudent?.name || ""}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="gender">Gender</Label>
+              <Input
+                type="select"
+                name="gender"
+                id="gender"
+                value={isAdding ? newStudent.gender : currentStudent?.gender || "M"}
+                onChange={handleInputChange}
+              >
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+              </Input>
+            </FormGroup>
+            <FormGroup>
+              <Label for="age">Age</Label>
+              <Input
+                type="number"
+                name="age"
+                id="age"
+                value={isAdding ? newStudent.age : currentStudent?.age || 0}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="education">Education</Label>
+              <Input
+                type="text"
+                name="education"
+                id="education"
+                value={isAdding ? newStudent.education : currentStudent?.education || ""}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="academicYear">Academic Year</Label>
+              <Input
+                type="number"
+                name="academicYear"
+                id="academicYear"
+                value={isAdding ? newStudent.academicYear : currentStudent?.academicYear || 0}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+          </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={handleUpdateStudent}>
-            Update
+          <Button color="primary" onClick={isAdding ? handleAddStudent : handleUpdateStudent}>
+            {isAdding ? "Add Student" : "Update Student"}
           </Button>
           <Button color="secondary" onClick={toggleModal}>
             Cancel
